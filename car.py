@@ -4,6 +4,8 @@ import pygame
 
 class Car:
 
+    newRect = pygame.Rect(0,0,1,1)
+
     #constructor
     def __init__(self, x, y):
         self.x = x
@@ -22,11 +24,17 @@ class Car:
     def rotateRight(self):
         self.angle+=1
 
-    def move(self):
+    def move(self, track):
+        oldx = self.x
+        oldy = self.y
         self.x += self.speed * math.sin((self.angle+90)/180*math.pi)
         self.y += self.speed * math.cos((self.angle+90)/180*math.pi)
+        for rectangle in track:
+            if pygame.Rect.colliderect(rectangle, self.new_rect):
+                self.x = oldx
+                self.y = oldy
 
     def draw(self, screen):
         rotatedImage = pygame.transform.rotate(self.image,self.angle)
-        new_rect = rotatedImage.get_rect(center = self.image.get_rect(center = (self.x, self.y)).center)
-        screen.blit(rotatedImage, new_rect)
+        self.new_rect = rotatedImage.get_rect(center = self.image.get_rect(center = (self.x, self.y)).center)
+        screen.blit(rotatedImage, self.new_rect)
