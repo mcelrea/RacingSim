@@ -20,14 +20,14 @@ class Car:
 
     def rotateLeft(self, track):
         oldAngle = self.angle
-        self.angle-=3
+        self.angle+=3
         for rectangle in track:
             if pygame.Rect.colliderect(rectangle, self.new_rect):
                 self.angle = oldAngle
 
     def canRotateLeft(self, track):
         oldAngle = self.angle
-        self.angle-=3
+        self.angle+=3
         for rectangle in track:
             if pygame.Rect.colliderect(rectangle, self.new_rect):
                 self.angle = oldAngle
@@ -37,14 +37,14 @@ class Car:
 
     def rotateRight(self, track):
         oldAngle = self.angle
-        self.angle+=3
+        self.angle-=3
         for rectangle in track:
             if pygame.Rect.colliderect(rectangle, self.new_rect):
                 self.angle = oldAngle
 
     def canRotateRight(self, track):
         oldAngle = self.angle
-        self.angle+=3
+        self.angle-=3
         for rectangle in track:
             if pygame.Rect.colliderect(rectangle, self.new_rect):
                 self.angle = oldAngle

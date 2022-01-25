@@ -25,8 +25,21 @@ def getUserInput():
     elif pressed[pygame.K_s]:
         player1.reverse(track1.getWalls())
 
+def createTrack1():
+    track1.addRect(pygame.Rect(0,0,800,25))
+    track1.addRect(pygame.Rect(800,0,25,300))
+    track1.addRect(pygame.Rect(800,300,300,25))
+    track1.addRect(pygame.Rect(1100,300,25,300))
+    track1.addRect(pygame.Rect(0,600,1125,25))
+    track1.addRect(pygame.Rect(0,0,25,600))
+    track1.addRect(pygame.Rect(200,200,400,25))
+    track1.addRect(pygame.Rect(200,200,25,250))
+    track1.addRect(pygame.Rect(600,200,25,200))
+    track1.addRect(pygame.Rect(600,400,150,25))
+    track1.addRect(pygame.Rect(750,400,25,100))
+    track1.addRect(pygame.Rect(200,400,400,25))
 
-track1.addRect(pygame.Rect(600,100,50,300))
+createTrack1()
 while True:
     #loop through and empty the event queue, key presses
     #buttons, clicks, etc.
