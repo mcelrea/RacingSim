@@ -17,11 +17,13 @@ def getUserInput():
     pressed = pygame.key.get_pressed()
 
     if pressed[pygame.K_a]:
-        player1.rotateLeft()
+        player1.rotateLeft(track1.getWalls())
     elif pressed[pygame.K_d]:
-        player1.rotateRight()
+        player1.rotateRight(track1.getWalls())
     if pressed[pygame.K_w]:
         player1.move(track1.getWalls())
+    elif pressed[pygame.K_s]:
+        player1.reverse(track1.getWalls())
 
 
 track1.addRect(pygame.Rect(600,100,50,300))
