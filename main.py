@@ -26,7 +26,7 @@ def getUserInput():
         player1.reverse(track1.getWalls())
 
 def clear_screen():
-    pygame.draw.rect(screen, (0,0,0), (0, 0, 1280, 720))
+    pygame.draw.rect(screen, (240,224,202), (0, 0, 1280, 720))
 
 def createTrack1():
     track1.addRect(pygame.Rect(0,0,800,25))
