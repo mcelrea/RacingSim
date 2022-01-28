@@ -19,7 +19,7 @@ class Car:
         self.length = 15
         self.angle = 0
         self.speed = 3
-        loadImage = pygame.image.load("greenCar.png")
+        loadImage = pygame.image.load("small car.png")
         self.image = pygame.transform.scale(loadImage,(15,15))
         self.myRect = pygame.Rect(self.x, self.y, self.width, self.length)
 

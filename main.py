@@ -25,6 +25,9 @@ def getUserInput():
     elif pressed[pygame.K_s]:
         player1.reverse(track1.getWalls())
 
+def clear_screen():
+    pygame.draw.rect(screen, (0,0,0), (0, 0, 1280, 720))
+
 def createTrack1():
     track1.addRect(pygame.Rect(0,0,800,25))
     track1.addRect(pygame.Rect(800,0,25,300))
@@ -49,6 +52,7 @@ while True:
             quit()
     getUserInput()
 
+    clear_screen()
     track1.drawRaceTrack(screen)
     player1.draw(screen)
     pygame.display.flip()
