@@ -10,7 +10,7 @@ FPS = 60
 fpsClock = pygame.time.Clock()
 screen = pygame.display.set_mode((1280,720))
 
-player1 = Car(200,200)
+player1 = Car(100,100)
 track1 = RaceTrack("track 1")
 
 def getUserInput():
