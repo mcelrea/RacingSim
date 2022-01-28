@@ -76,13 +76,13 @@ class Car:
                 if abs(self.new_rect.y - (rectangle.y + rectangle.height)) < 5:
                     self.y = rectangle.y+rectangle.height+10
                 #hitting bottom
-                if abs((self.new_rect.y + self.new_rect.height) - rectangle.y) < 5:
+                elif abs((self.new_rect.y + self.new_rect.height) - rectangle.y) < 5:
                     self.y = rectangle.y-10
                 #hitting left
-                if abs(self.new_rect.x - (rectangle.x + rectangle.width)) < 5:
+                elif abs(self.new_rect.x - (rectangle.x + rectangle.width)) < 5:
                     self.x = rectangle.x+rectangle.width+10
                 #hitting right
-                if abs((self.new_rect.x+self.new_rect.width) - rectangle.x) < 5:
+                elif abs((self.new_rect.x+self.new_rect.width) - rectangle.x) < 5:
                     self.x = rectangle.x-10
 
     def canMove(self, track):
