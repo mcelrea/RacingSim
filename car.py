@@ -1,4 +1,5 @@
 import math
+import random
 
 import pygame
 
@@ -20,6 +21,9 @@ class Car:
         self.angle = 0
         self.speed = 3
         loadImage = pygame.image.load("small car.png")
+        var = pygame.PixelArray(loadImage)
+        var.replace((0,255,30), (random.randint(0,255),random.randint(0,255),random.randint(0,255)))
+        del var
         self.image = pygame.transform.scale(loadImage,(15,15))
         self.myRect = pygame.Rect(self.x, self.y, self.width, self.length)
 
