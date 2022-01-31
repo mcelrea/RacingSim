@@ -11,6 +11,7 @@ import pygame
 class Car:
 
     newRect = pygame.Rect(0,0,1,1)
+    checkPoints = [False, False, False, False, False]
 
     #constructor
     def __init__(self, x, y):
@@ -44,6 +45,12 @@ class Car:
         self.angle = oldAngle
         return True
 
+    def getCheckPoint(self, n):
+        if(n < len(self.checkPoints)):
+            return self.checkPoints[n]
+        else:
+            return "BAD DATA"
+
     def rotateRight(self, track):
         oldAngle = self.angle
         self.angle-=3
@@ -71,10 +78,12 @@ class Car:
     def move(self, track):
         oldx = self.x
         oldy = self.y
+        walls = track.getWalls()
+        trackCheckPoints = track.getCheckPoints()
         print(self.angle)
         self.x += self.speed * math.sin((self.angle+90)/180*math.pi)
         self.y += self.speed * math.cos((self.angle+90)/180*math.pi)
-        for rectangle in track:
+        for rectangle in walls:
             if pygame.Rect.colliderect(rectangle, self.new_rect):
                 #hitting top
                 if abs(self.new_rect.y - (rectangle.y + rectangle.height)) < 5:
@@ -88,6 +97,19 @@ class Car:
                 #hitting right
                 elif abs((self.new_rect.x+self.new_rect.width) - rectangle.x) < 5:
                     self.x = rectangle.x-10
+        for i in range(0,len(trackCheckPoints)):
+            if pygame.Rect.colliderect(trackCheckPoints[i],self.new_rect):
+                if i == 0:
+                    self.checkPoints[0] = True
+                else:
+                    if self.checkPoints[i-1] == True:
+                        self.checkPoints[i] = True
+                    if i == 4:
+                        self.checkPoints[0] = False
+                        self.checkPoints[1] = False
+                        self.checkPoints[2] = False
+                        self.checkPoints[3] = False
+                        self.checkPoints[4] = False
 
     def canMove(self, track):
         oldx = self.x
