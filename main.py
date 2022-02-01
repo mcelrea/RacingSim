@@ -14,6 +14,7 @@ fpsClock = pygame.time.Clock()
 screen = pygame.display.set_mode((1280,720))
 
 player1 = Car(100,100)
+ai1 = AICar(100,80)
 track1 = RaceTrack("track 1")
 
 def getUserInput():
@@ -39,6 +40,8 @@ def drawHUD():
     screen.blit(textsurface,(900,90))
     textsurface = myfont.render("check point 4: " + str(player1.getCheckPoint(4)), False, (0, 0, 0))
     screen.blit(textsurface,(900,120))
+    textsurface = myfont.render("laps: " + str(player1.getNumLaps()), False, (0, 0, 0))
+    screen.blit(textsurface,(900,150))
 
 
 def clear_screen():
@@ -73,11 +76,19 @@ while True:
         #if the event is a click on the "X" close button
         if event.type == pygame.QUIT:
             quit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                player1.shiftUp()
+            if event.key == pygame.K_DOWN:
+                player1.shiftDown()
+
     getUserInput()
+    ai1.move(track1)
 
     clear_screen()
     track1.drawRaceTrack(screen)
     player1.draw(screen)
+    ai1.draw(screen)
     drawHUD()
     pygame.display.flip()
     fpsClock.tick(FPS)
